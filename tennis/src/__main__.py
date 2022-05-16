@@ -1,9 +1,12 @@
 from models.grid import Grid
 
 if __name__ == '__main__':
-    # test code
+    # Test code
     grid = Grid()
 
-    grid_options = {}
+    # TODO: Configure options here for now - will make a CLI at some point.
+    grid_options = {
+        'void_probability': 0.5,
+    }
     grid.generate(**grid_options)
     grid.visualise()

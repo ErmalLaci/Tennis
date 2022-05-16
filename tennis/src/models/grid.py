@@ -1,7 +1,14 @@
 """Defines the grid on which hexes can be generated."""
+from typing import Dict, Optional
 
+from tennis.src.models.hex import Hex
+from tennis.src.types import AxialCoordinate
 
+# Environment variables
 MISSING_GRID_ERROR_MSG = 'A grid must be generated before it can be visualised!'
+
+# Local types
+GridMap = Dict[AxialCoordinate, Optional[Hex]]
 
 
 class Grid:
@@ -9,8 +16,19 @@ class Grid:
         self._grid = None
 
     @property
-    def grid(self):
+    def grid(self) -> GridMap:
+        """The collection of hexes representing the grid.
+
+        A grid is a mapping of axial coordinates to hexes (or void spaces).
+
+        Return:
+            The grid.
+        """
         return self._grid
+
+    @grid.setter
+    def grid(self, grid: GridMap) -> None:
+        self._grid = grid
 
     def generate(self, **options) -> None:
         """Use the provided options to generate a grid of hexes.
@@ -19,7 +37,11 @@ class Grid:
             options: Set of options to determine behaviour of grid generation.
 
         """
-        pass
+        grid = {}
+
+        # TODO: generate...
+
+        self.grid = grid
 
     def visualise(self) -> None:
         """Produce an image file representing the grid.
